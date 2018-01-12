@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 500px;
+            margin: 50px auto;
+        }
+        textarea{
+            width: 500px;
+            height:100px;
+        }
+        button{
+            float: right;
+            width: 100px;
+            height: 30px;
+        }
+        ul{
+            list-style: none;
+        }
+        i{
+            font-style: normal;
+            cursor: pointer;
+            float: right;
+        }
+        li{
+            border-bottom: 1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+<div>
+<textarea></textarea>
+<button>发送</button>
+<ul>
+    <li>
+     <p>111111</p>
+        <span>2018-1-10</span>
+        <i>删除</i>
+    </li>
+</ul>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+<script>
+    var time=null;
+    function timein() {
+        function times(n) {
+            if(n<10){
+                return '0'+n;
+            }else{
+                return ''+n;
+            }
+        }
+        var date=new Date();
+        var year= date.getFullYear();
+        var month=date.getMonth();
+        var ri=date.getDate();
+        var hours=date.getHours();
+        var minutes=date.getMinutes();
+        var seconds=date.getSeconds();
+        time=year+'年'+(month+1)+'月'+ri+'日'+hours+'：'+times(minutes)+'：'+times(seconds);
+    }
+    $('button').on('click',function () {
+        timein();
+        var $text=$('textarea').val();
+         var $li=$('<li><p>'+($text)+'</p><span>'+(time)+'</span><i>删除</i></li>');
+        $('ul').prepend($li);
+        $('textarea').val('');
+        $('i').on('click',function () {
+            $(this).parent().remove();
+        })
+    });
+
+        $('i').on('click',function () {
+            $(this).parent().remove();
+        })
+</script>
+</html>
