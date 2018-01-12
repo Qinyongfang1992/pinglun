@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        textarea {
+            height: 200px;
+            width: 450px;
+            margin:20px auto;
+            display: block;
+        }
+
+        div {
+          width: 450px;
+            margin:20px auto;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<textarea></textarea>
+<div></div>
+</body>
+<script>
+var t=document.querySelector('textarea');
+var d=document.querySelector('div');
+    t.addEventListener('blur',function () {
+        var text=t.value;
+        var i=0;
+        function type() {
+            var str=text.substring(0,i);
+            d.innerHTML=str+"_";
+            i++;
+            if(i>text.length){
+                i=0;
+              clearInterval(a);
+            }
+        }
+        var a =setInterval(type, 300);
+    });
+//
+
+
+
+
+
+
+
+</script>
+</html>
